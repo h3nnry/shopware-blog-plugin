@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Blog Index Page</title>
+
+        <input-field type="single-select">
+            <name>articlesSortBy</name>
+            <label>Articles Sort By</label>
+            <options>
+                <option>
+                    <id>publishedAt</id>
+                    <name>Publish Date (default)</name>
+                </option>
+                <option>
+                    <id>status</id>
+                    <name>Status</name>
+                </option>
+                <option>
+                    <id>author</id>
+                    <name>Author</name>
+                </option>
+            </options>
+            <defaultValue>"publishedAt"</defaultValue>
+        </input-field>
+        <input-field type="int">
+            <name>articlesPerPage</name>
+            <label>Articles Per Page</label>
+            <defaultValue>0</defaultValue>
+        </input-field>
+        <input-field type="int">
+            <name>articlesPerPageDefault</name>
+            <label>Articles Per Page</label>
+            <defaultValue>10</defaultValue>
+        </input-field>
+        <input-field>
+            <name>metaTitle</name>
+            <label>Meta Title</label>
+        </input-field>
+        <input-field>
+            <name>metaKeywords</name>
+            <label>Meta Keywords</label>
+        </input-field>
+        <input-field>
+            <name>metaDescription</name>
+            <label>Meta Description</label>
+        </input-field>
+        <input-field type="bool">
+            <name>enabled</name>
+            <label>Enabled</label>
+        </input-field>
+    </card>
+
+</config>

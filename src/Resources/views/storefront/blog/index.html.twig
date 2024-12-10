@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_content %}
+    <h1>Articles</h1>
+
+    {% if articles|length > 0 %}
+        {% for articlesBatch in articles|batch(2) %}
+            <div class="row mb-2">
+                {% for article in articlesBatch %}
+                    <div class="col-md-6">
+                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <h3 class="mb-0">{{ article.title }}</h3>
+                                <div class="mb-1 text-muted">{{ article.publishedAt|date('F j, Y H:i') }}</div>
+                                <p class="card-text mb-auto">{{ article.teaser[:100] ~ '...'|raw }}</p>
+                                <a href="{{ app.request.basePath ~ '/blog/' ~ article.id }}" class="stretched-link"><p>{{ 'general.content.continueReading' | trans }}</p></a>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        {% block blog_items_list_pagination %}
+            {% sw_include '@Storefront/storefront/layout/pagination.html.twig' with {
+                context: context,
+                pagination: pagination,
+            } only %}
+        {% endblock %}
+    {% else %}
+        <p>{{ 'general.content.noResults' | trans }}</p>
+    {% endif %}
+{% endblock %}

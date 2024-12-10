@@ -1,0 +1,50 @@
+{
+  "sw-article": {
+    "general": {
+      "mainMenuItemList": "Blog-Artikel",
+      "mainMenuItemGeneral": "Blog-Artikel",
+      "placeholderSearchBar": "Artikel suchen...",
+      "descriptionTextModule": "Artikel hier verwalten."
+    },
+    "list": {
+      "columnId": "Uuid",
+      "columnTitle": "Titel",
+      "columnStatus": "Stand",
+      "columnTeaser": "harte Nuss",
+      "columnContent": "Inhalt",
+      "columnPublishedAt": "Veröffentlichungsdatum",
+      "columnAuthor": "Autor",
+      "textArticles": "Artikel",
+      "buttonAddArticle": "Artikel hinzufügen",
+      "titleSidebarItemRefresh": "Aktualisieren",
+      "titleSidebarItemFilter": "Filter"
+    },
+    "filters": {
+      "statusFilter": {
+        "label": "Status",
+        "placeholder": "Status"
+      },
+      "publishedAtFilter": {
+        "label": "Veröffentlichungsdatum",
+        "placeholder": "Veröffentlichungsdatum"
+      }
+    },
+    "detail": {
+      "textHeadline": "Neuer artikel",
+      "buttonCancel": "Stornieren",
+      "buttonSave": "Speichern",
+      "cardTitleArticleInfo": "Artikelinformationen",
+      "labelAuthor": "Autor",
+      "placeholderAuthor": "Geben Sie den Autor des Artikels ein...",
+      "labelTitle": "Titel",
+      "placeholderTitle": "Artikeltitel eingeben...",
+      "labelTeaser": "Teaser",
+      "placeholderTeaser": "Artikel-Teaser eingeben...",
+      "labelContent": "Inhalt",
+      "placeholderContent": "Artikelinhalt eingeben...",
+      "labelPublishedAt": "Veröffentlicht am",
+      "placeholderPublishedAt": "Geben Sie das Veröffentlichungsdatum und die Uhrzeit des Artikels ein...",
+      "labelStatus": "Status"
+    }
+  }
+}

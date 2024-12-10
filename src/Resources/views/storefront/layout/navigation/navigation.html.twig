@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+
+{% block layout_main_navigation_menu_items %}
+    {{ parent() }}
+    <a class="nav-link main-navigation-link {% if controllerName is same as('Blog') %} active{% endif %}"
+       href="{{ path('frontend.modigblog.index') }}"
+       itemprop="url"
+       title="{{ 'general.navigation.labelBlog' | trans }}">
+        <div class="main-navigation-link-text">
+            <span itemprop="name">{{ 'general.navigation.labelBlog' | trans }}</span>
+        </div>
+    </a>
+{% endblock %}

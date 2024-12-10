@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<ruleset name="Aggregation of PHPMD rule sets"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>
+        Aggregates rule sets for PHPMD
+    </description>
+    <rule ref="./module.dev/phpmd/resource/annotations.xml"/>
+    <rule ref="./vendor/phpmd/phpmd/src/main/resources/rulesets/cleancode.xml">
+        <exclude name="StaticAccess"/>
+        <exclude name="ElseExpression"/>
+    </rule>
+    <rule ref="./vendor/phpmd/phpmd/src/main/resources/rulesets/codesize.xml"/>
+    <rule ref="./vendor/phpmd/phpmd/src/main/resources/rulesets/controversial.xml">
+        <exclude name="CamelCaseMethodName"/>
+    </rule>
+    <rule ref="./vendor/phpmd/phpmd/src/main/resources/rulesets/design.xml"/>
+    <rule ref="./vendor/phpmd/phpmd/src/main/resources/rulesets/naming.xml">
+        <exclude name="ShortVariable"/>
+        <exclude name="LongVariable"/>
+        <exclude name="LongClassName"/>
+    </rule>
+    <rule ref="./vendor/phpmd/phpmd/src/main/resources/rulesets/unusedcode.xml">
+        <exclude name="UnusedFormalParameter"/>
+    </rule>
+    <rule ref="./vendor/phpmd/phpmd/src/main/resources/rulesets/controversial.xml/CamelCaseMethodName">
+        <priority>1</priority>
+        <properties>
+            <property name="allow-underscore"
+                      description="Allow an optional, single underscore at the beginning."
+                      value="true" />
+            <property name="allow-underscore-test"
+                      description="Is it allowed to have underscores in test method names."
+                      value="true" />
+        </properties>
+    </rule>
+</ruleset>

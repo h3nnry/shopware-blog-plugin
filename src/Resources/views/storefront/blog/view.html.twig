@@ -1,0 +1,16 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <article class="blog-post">
+                <h2 class="display-5 link-body-emphasis mb-1">{{ article.title }}</h2>
+                <p class="blog-post-meta">{{ article.publishedAt|date('F j, Y H:i') }} {{ 'general.content.by' | trans }} <a href="#">{{ article.author }}</a></p>
+
+                <p class="pb-4 mb-4 fst-italic border-bottom">{{ article.teaser }}</p>
+                <p>{{ article.content }}</p>
+                <a href="{{ app.request.headers.get('referer') }}">{{ 'general.content.backToList' | trans }}</a>
+            </article>
+        </div>
+    </div>
+{% endblock %}

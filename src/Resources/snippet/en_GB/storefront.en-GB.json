@@ -1,0 +1,17 @@
+{
+  "general": {
+    "navigation": {
+      "labelBlog": "Blog"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "content": {
+      "noResults": "No results found.",
+      "continueReading": "Continue reading",
+      "by": "by",
+      "backToList": "Back to the list"
+    }
+  }
+}

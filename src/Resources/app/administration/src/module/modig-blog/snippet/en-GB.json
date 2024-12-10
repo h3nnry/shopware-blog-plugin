@@ -1,0 +1,50 @@
+{
+  "sw-article": {
+    "general": {
+      "mainMenuItemList": "Blog Articles",
+      "mainMenuItemGeneral": "Blog Articles",
+      "placeholderSearchBar": "Search articles...",
+      "descriptionTextModule": "Manage articles here."
+    },
+    "list": {
+      "columnId": "Uuid",
+      "columnTitle": "Title",
+      "columnStatus": "Status",
+      "columnTeaser": "Teaser",
+      "columnContent": "Content",
+      "columnPublishedAt": "Publish date",
+      "columnAuthor": "Author",
+      "textArticles": "Articles",
+      "buttonAddArticle": "Add article",
+      "titleSidebarItemRefresh": "Refresh",
+      "titleSidebarItemFilter": "Filter"
+    },
+    "filters": {
+      "statusFilter": {
+        "label": "Status",
+        "placeholder": "Status"
+      },
+      "publishedAtFilter": {
+        "label": "Publish date",
+        "placeholder": "Publish date"
+      }
+    },
+    "detail": {
+      "textHeadline": "New article",
+      "buttonCancel": "Cancel",
+      "buttonSave": "Save",
+      "cardTitleArticleInfo": "Article information",
+      "labelAuthor": "Author",
+      "placeholderAuthor": "Enter article author...",
+      "labelTitle": "Title",
+      "placeholderTitle": "Enter article title...",
+      "labelTeaser": "Teaser",
+      "placeholderTeaser": "Enter article teaser...",
+      "labelContent": "Content",
+      "placeholderContent": "Enter article content...",
+      "labelPublishedAt": "Published At",
+      "placeholderPublishedAt": "Enter article published date time...",
+      "labelStatus": "Status"
+    }
+  }
+}

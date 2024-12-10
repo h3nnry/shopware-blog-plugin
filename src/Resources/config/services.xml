@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ModigBlog\Core\Content\Article\ArticleDefinition">
+            <tag name="shopware.entity.definition" entity="article" />
+        </service>
+        <service id="ModigBlog\Core\Content\Article\ArticleHydrator" public="true">
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="ModigBlog\Core\Content\Article\Aggregate\ArticleTranslation\ArticleTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="article_translation" />
+        </service>
+
+        <service id="ModigBlog\Storefront\Controller\BlogController" public="true">
+            <argument id="ModigBlog\Core\Content\DataResolver\ArticleListResolver" type="service" />
+            <argument id="ModigBlog\Core\Content\Repository\ArticleRepository" type="service" />
+            <argument id="Shopware\Core\System\SystemConfig\SystemConfigService" type="service" />
+            <argument id="Shopware\Storefront\Page\GenericPageLoader" type="service" />
+            <argument id="Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface" type="service"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+            <call method="setTwig">
+                <argument type="service" id="twig" />
+            </call>
+        </service>
+
+        <service id="ModigBlog\Core\Content\DataResolver\ArticleListResolver">
+            <argument id="article.repository" type="service" />
+            <argument id="Shopware\Core\System\SystemConfig\SystemConfigService" type="service" />
+        </service>
+
+        <service id="ModigBlog\Core\Content\Repository\ArticleRepository">
+            <argument id="article.repository" type="service" />
+        </service>
+
+    </services>
+</container>

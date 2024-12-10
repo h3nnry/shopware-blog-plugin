@@ -1,0 +1,17 @@
+{
+  "general": {
+    "navigation": {
+      "labelBlog": "Blog"
+    },
+    "pagination": {
+      "previous": "Vorherige",
+      "next": "Nächste"
+    },
+    "content": {
+      "noResults": "Keine Ergebnisse gefunden.",
+      "continueReading": "Weiterlesen",
+      "by": "von",
+      "backToList": "Zurück zur Liste"
+    }
+  }
+}

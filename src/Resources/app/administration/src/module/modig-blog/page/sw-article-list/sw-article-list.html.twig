@@ -1,0 +1,148 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_article_list %}
+<sw-page class="sw-article-list">
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_article_list_search_bar %}
+    <template #search-bar>
+        <sw-search-bar
+            initial-search-type="article"
+            :initial-search="term"
+            @search="onSearch"
+        />
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_article_list_smart_bar_header %}
+    <template #smart-bar-header>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_article_list_smart_bar_header_title %}
+        <h2>
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_article_list_smart_bar_header_title_text %}
+                {{ $tc('sw-article.list.textArticles') }}
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_article_list_smart_bar_header_amount %}
+            <span
+                v-if="!isLoading"
+                class="sw-page__smart-bar-amount"
+            >
+                ({{ total }})
+            </span>
+            {% endblock %}
+        </h2>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_article_list_actions %}
+    <template #smart-bar-actions>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_article_list_smart_bar_actions %}
+        <sw-button
+            v-tooltip.bottom="{
+                message: $tc('sw-privileges.tooltip.warning'),
+                disabled: acl.can('article.creator'),
+                showOnDisabledElements: true
+            }"
+            :router-link="{ name: 'sw.article.create' }"
+            :disabled="!acl.can('article.creator') || undefined"
+            class="sw-article-list__add-manufacturer"
+            variant="primary"
+        >
+            {{ $tc('sw-article.list.buttonAddArticle') }}
+        </sw-button>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_article_list_language_switch %}
+    <template #language-switch>
+        <sw-language-switch @on-change="onChangeLanguage" />
+    </template>
+    {% endblock %}
+
+    <template #content>
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_article_list_content %}
+        <div class="sw-article-list__content">
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_article_list_grid %}
+            <sw-entity-listing
+                v-if="entitySearchable"
+                class="sw-article-list__grid"
+                detail-route="sw.article.detail"
+                :is-loading="isLoading"
+                :columns="articleColumns"
+                :repository="articleRepository"
+                :items="articles"
+                :criteria-limit="limit"
+                :sort-by="publishedAt"
+                :sort-direction="sortDirection"
+                :disable-data-fetching="true"
+                :allow-edit="acl.can('article.editor') || undefined"
+                :allow-inline-edit="acl.can('article.editor') || undefined"
+                :allow-delete="acl.can('article.deleter') || undefined"
+                :show-selections="acl.can('article.deleter') || undefined"
+                identifier="sw-article-list"
+                @update-records="updateTotal"
+                @page-change="onPageChange"
+                @column-sort="onSortColumn"
+            >
+            </sw-entity-listing>
+            {% endblock %}
+
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_article_list_empty_state %}
+            <sw-empty-state
+                v-if="!isLoading && !total && isValidTerm(term)"
+                :title="$tc('sw-empty-state.messageNoResultTitle')"
+            >
+                <template #default>
+                    {{ $tc('sw-empty-state.messageNoResultSublineBefore') }}
+                    <router-link
+                        class="sw-empty-state__description-link"
+                        :to="{ name: 'sw.profile.index.searchPreferences' }"
+                    >
+                        {{ $tc('sw-empty-state.messageNoResultSublineLink') }}
+                    </router-link>
+                    {{ $tc('sw-empty-state.messageNoResultSublineAfter') }}
+                </template>
+            </sw-empty-state>
+            {% endblock %}
+
+        </div>
+        {% endblock %}
+
+    </template>
+
+    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+    {% block sw_article_list_sidebar %}
+        <template #sidebar>
+            <sw-sidebar>
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_article_list_sidebar_refresh %}
+                    <sw-sidebar-item
+                            icon="regular-undo"
+                            :title="$tc('sw-article.list.titleSidebarItemRefresh')"
+                            @click="onRefresh"
+                    />
+                {% endblock %}
+
+                <sw-sidebar-filter-panel
+                        entity="article"
+                        :store-key="storeKey"
+                        :active-filter-number="activeFilterNumber"
+                        :filters="listFilters"
+                        :defaults="defaultFilters"
+                        @criteria-changed="updateCriteria"
+                />
+            </sw-sidebar>
+        </template>
+    {% endblock %}
+</sw-page>
+{% endblock %}
