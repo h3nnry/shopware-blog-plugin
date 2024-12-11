@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Tests\Core\DataResolver;
+
 use ModigBlog\Core\Content\DataResolver\ArticleListResolver;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -35,11 +37,12 @@ class ArticleListResolverTest extends TestCase
     }
 
     /**
-     * @dataProvider provideGetArticle
+     * @dataProvider provideGetArticlesCases
      */
     public function testGetArticles(int $limit, int $defaultLimit, string $sortBy, Request $request): void
     {
-        $this->systemConfigServiceMock->method('get')
+        $this->systemConfigServiceMock
+            ->method('get')
             ->willReturnCallback(
                 static function (string $arg) use ($limit, $defaultLimit, $sortBy): int|string {
                     switch ($arg) {
@@ -63,10 +66,7 @@ class ArticleListResolverTest extends TestCase
         $this->articleListResolver->getArticles($request, $this->contextMock);
     }
 
-    /**
-     * @dataProvider provideGetArticle
-     */
-    public static function provideGetArticle(): iterable
+    public static function provideGetArticlesCases(): iterable
     {
         return [
             'Get articles list' => [
