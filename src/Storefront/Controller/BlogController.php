@@ -60,6 +60,7 @@ final class BlogController extends StorefrontController
 
         return $this->renderStorefront('@ModigBlog/storefront/blog/view.html.twig', [
             'article' => $article,
+            'page' => $page,
         ]);
     }
 
